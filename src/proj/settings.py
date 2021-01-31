@@ -25,7 +25,7 @@ SECRET_KEY = ')p(@hwxxz+p+9@#876q3t!dz#=a#1(@vpbd-l8t$eu+x7zt677'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [shopbook.pythonanywhere.com]
 
 
 # Application definition
