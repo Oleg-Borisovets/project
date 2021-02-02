@@ -14,7 +14,7 @@ class Author(models.Model):
         return self.Author_name
 # добовляем табличку с серия книг 2 поля первая какая серия книги  вторая описание серии .
 class Series(models.Model):
-    series =models.CharField(
+    series = models.CharField(
         verbose_name="Series",
         max_length=20, 
         blank=True,
