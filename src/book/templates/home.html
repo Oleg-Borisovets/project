@@ -6,10 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Hello World </h1>
-  
-    {{ aut.Author_name }} {{ aut.Author_description }}<br>
- 
+    <h1>{{pk}}</h1>
+    <table border="1">
+        <tr> 
+            <td> pk </td> 
+            <td> name </td> 
+            <td> description </td>    
+            <td> actions </td>    
+           
+        </tr>
+        {% for auth in aut %}
+        <tr>
+            <td> {{ auth.pk }}</td> 
+            <td><a href="/cities/{{ auth.pk }}/"> {{ auth.Author_name }} </a></td> 
+            <td> {{ auth.Author_description }} </td>   
+              
+            <td> <a href="/city_delete/{{ auth.pk }}/">  delete </a>
+                 <a href="/city_update/{{ auth.pk }}/">  update </a>
+            </td>   
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/city_create/"> Add </a>
     
 </body>
 </html>

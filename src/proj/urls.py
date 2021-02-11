@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from book.views import home_page
+from book.views import cities_list
+from book.views import cities_detail
+from book.views import city_delete
+from book.views import city_create
+from book.views import city_update
+from book.views import CiteDetail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_page)
+    path('cities/', cities_list),
+    path('cities/<int:pk>/', cities_detail),
+    path('cities-cbv/<int:pk>/', CiteDetail.as_view()),
+    path('city_delete/<int:pk>/', city_delete),
+    path('city_create/', city_create),
+    path('city_update/<int:pk>/', city_update)
+   
 ]

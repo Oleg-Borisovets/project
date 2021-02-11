@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="Author_name" required value="{{city.Author_name}}"><br>
+        <input type="text" name="Author_description" value="{{city.Author_description}}"><br>
+        <button>Add</button>
+    </form>     
+  
+    
+</body>
+</html>
