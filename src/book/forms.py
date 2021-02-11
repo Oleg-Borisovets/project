@@ -7,9 +7,5 @@ class CityForm(forms.ModelForm):
         fields=('Author_name', 'Author_description')
     
 
-    #
-    #
-    #
-    #
-    #
+    
     
