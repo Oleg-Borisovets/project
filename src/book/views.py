@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from book.models import Author
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from . import forms
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, DeleteView, CreateView
 from book.models import Author
+
 # Create your views here.
 def cities_list(request):
     aut = Author.objects.all()
@@ -30,6 +31,10 @@ def city_delete(request, pk):
     context = {'message': message}
     return render(request, template_name='delete.html', context=context)    
 
+class CitiesDelete(DeleteView):
+    success_url=reverse_lazy('cities-cbv')
+   
+    model=Author
      
 
 def city_create(request):
@@ -47,6 +52,13 @@ def city_create(request):
     
     return render(request, template_name='create.html', context=context)      
 
+class CityCreate(CreateView):
+    model=Author
+    success_url=reverse_lazy('cities-cbv')
+    fields=("Author_name", "Author_description")
+    #form_class = forms.CityForm # можно подкинуть свою форму всесто той которая на предыдущей строке 
+
+
 def city_update(request, pk):
     context = {}
     if request.method == "GET":
@@ -63,5 +75,5 @@ def city_update(request, pk):
         
     return render(request, template_name='update.html', context=context)     
 
-    
+
     

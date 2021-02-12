@@ -20,16 +20,19 @@ from book.views import cities_detail
 from book.views import city_delete
 from book.views import city_create
 from book.views import city_update
-from book.views import CiteDetail, citieslist     
+from book.views import CiteDetail, citieslist, CitiesDelete  
 from book import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cities/', views.cities_list),
-    path('cities-cbv/', views.citieslist.as_view()),
+    path('cities-cbv/', views.citieslist.as_view(), name=('cities-cbv')),
     path('cities/<int:pk>/', views.cities_detail),
-    path('cities-cbv/<int:pk>/', views.CiteDetail.as_view()),
+    path('cities-cbv/<int:pk>/', views.CiteDetail.as_view(), name=('cities-Detail')),
     path('city_delete/<int:pk>/', views.city_delete),
+    path('city_delete-cbv/<int:pk>/', views.CitiesDelete.as_view()),
     path('city_create/', views.city_create),
+    path('city_create-cbv/', views.CityCreate.as_view()),
     path('city_update/<int:pk>/', views.city_update)
+    
    
 ]
