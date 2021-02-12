@@ -4,12 +4,16 @@ from django.http import HttpResponseRedirect
 from book.models import Author
 from django.urls import reverse
 from . import forms
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
+from book.models import Author
 # Create your views here.
 def cities_list(request):
     aut = Author.objects.all()
     context = {'aut': aut}
     return render(request, template_name='home.html', context=context)
+
+class citieslist(ListView):
+    model=Author   
   
 def cities_detail(request, pk):
     aut_1 = Author.objects.get(pk=pk)
@@ -17,8 +21,7 @@ def cities_detail(request, pk):
     return render(request, template_name='detail.html', context=context) 
 
 class CiteDetail(DetailView):
-    pass
-
+    model=Author
 
 def city_delete(request, pk):
     aut_1 = Author.objects.get(pk=pk)

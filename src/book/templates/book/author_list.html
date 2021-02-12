@@ -15,7 +15,7 @@
             <td> actions </td>    
            
         </tr>
-        {% for auth in aut %}
+        {% for auth in object_list %}
         <tr>
             <td> {{ auth.pk }}</td> 
             <td><a href="/cities-cbv/{{ auth.pk }}/"> {{ auth.Author_name }} </a></td> 
