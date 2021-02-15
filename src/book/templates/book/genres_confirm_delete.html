@@ -6,11 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>name {{object.Author_name|default:"Description is empty "}}</h1>
-    <a href="/cities-cbv/">All</a><br>
-   
-    
-    {{object.Author_description}}</br>
+    <h1>Delete</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+      
+        <button>Delete</button>
+    </form>     
+  
     
 </body>
 </html>

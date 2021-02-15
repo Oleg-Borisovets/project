@@ -10,7 +10,7 @@
     <table border="1">
         <tr> 
             <td> pk </td> 
-            <td> name </td> 
+            <td> Publisher </td> 
             <td> description </td>    
             <td> actions </td>    
            
@@ -19,20 +19,18 @@
         {% for auth in object_list %}
         <tr>
             <td> {{ auth.pk }}</td> 
-            <td><a href="/cities-cbv/{{ auth.pk }}/"> {{ auth.Author_name }} </a></td> 
-            <td> {{ auth.Author_description }} </td>   
+            <td><a href="/publisher-cbv/{{ auth.pk }}/"> {{ auth.publisher }} </a></td> 
+            <td> {{ auth.publisher_description }} </td>   
               
-            <td> <a href="/city_delete-cbv/{{ auth.pk }}/">  delete </a>
-                 <a href="/city_update-cbv/{{ auth.pk }}/">  update </a>
+            <td> <a href="/publisher-delete-cbv/{{ auth.pk }}/">  delete </a>
+                 <a href="/publisher_update-cbv/{{ auth.pk }}/">  update </a>
             </td>   
         </tr>
         {% endfor %}
     </table>
-    <a href="/city_create-cbv/"> Add </a>
+    <a href="/publisher_create-cbv/"> Add </a>
     
-
-
-    
+  
 
 
 </body>

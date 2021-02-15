@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from book.models import Author
+from book.models import Author, Series, Genres, Publisher
 from django.urls import reverse, reverse_lazy
 from . import forms
-from django.views.generic import DetailView, ListView, DeleteView, CreateView
-from book.models import Author
+from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
+
 
 # Create your views here.
 def cities_list(request):
@@ -76,4 +76,84 @@ def city_update(request, pk):
     return render(request, template_name='update.html', context=context)     
 
 
+class CityUpdate(UpdateView):
+    model=Author
+    success_url=reverse_lazy('cities-cbv')
+    fields=("Author_name", "Author_description")    
+
+
+class Serieslist(ListView):
+    model=Series
     
+class SeriesDetail(DetailView):
+    model=Series    
+
+class SeriesDelete(DeleteView):
+    success_url=reverse_lazy('series-cbv')
+    model=Series    
+
+class SeriesCreate(CreateView):
+    model=Series
+    success_url=reverse_lazy('series-cbv')
+    fields=("series", "series_description")    
+
+class SeriesUpdate(UpdateView):
+    model=Series
+    success_url=reverse_lazy('series-cbv')
+    fields=("series", "series_description")      
+
+
+class Genreslist(ListView):
+    model=Genres
+    
+class GenresDetail(DetailView):
+    model=Genres    
+
+class GenresDelete(DeleteView):
+    success_url=reverse_lazy('genres-cbv')
+    model=Genres    
+
+class GenresCreate(CreateView):
+    model=Genres
+    success_url=reverse_lazy('genres-cbv')
+    fields=("genres", "genres_description")    
+
+class GenresUpdate(UpdateView):
+    model=Genres
+    success_url=reverse_lazy('genres-cbv')
+    fields=("genres", "genres_description") 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Publisherlist(ListView):
+    model=Publisher
+    
+class PublisherDetail(DetailView):
+    model=Publisher    
+
+class PublisherDelete(DeleteView):
+    success_url=reverse_lazy('publisher-cbv')
+    model=Publisher    
+
+class PublisherCreate(CreateView):
+    model=Publisher
+    success_url=reverse_lazy('publisher-cbv')
+    fields=("publisher", "publisher_description")    
+
+class PublisherUpdate(UpdateView):
+    model=Publisher
+    success_url=reverse_lazy('publisher-cbv')
+    fields=("publisher", "publisher_description") 
