@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+{% load static %}
+{% block main_content %}
+
+
     <h1>name {{object.Author_name|default:"Description is empty "}}</h1>
-    <a href="/cities-cbv/">All</a><br>
+    <a href="/cities-cbv/"class="btn btn-success">All</a><br>
    
     
     {{object.Author_description}}</br>
-    
-</body>
-</html>
+
+
+    {% endblock main_content %}
