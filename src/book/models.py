@@ -6,6 +6,10 @@ class Author(models.Model):
     Author_name = models.CharField(
         verbose_name="name", 
         max_length=50)
+        # Для того что бы сделать фото 
+    pic = models.ImageField(
+        verbose_name='Picture',
+        upload_to = 'uploads/')    
     Author_description = models.TextField(
         verbose_name= "description",
         null=True,
@@ -19,6 +23,7 @@ class Series(models.Model):
         max_length=20, 
         blank=True,
         null=True)
+    
     series_description=models.TextField(
         verbose_name= "description",
         null=True,
@@ -35,6 +40,7 @@ class Genres(models.Model):
         max_length=20, 
         blank=True,
         null=True)
+    
     genres_description=models.TextField(
         verbose_name= "description",
         null=True,
@@ -45,14 +51,24 @@ class Genres(models.Model):
 # Добавить издатесьство 
 
 class Publisher(models.Model):
+
     publisher =models.CharField(
         verbose_name="publisher",
         max_length=50, 
         blank=True,
         null=True)
+   
     publisher_description=models.TextField(
         verbose_name= "description",
         null=True,
         blank=True)
     def __str__(self):
         return self.publisher 
+
+
+# карточка товара 
+class book(models.Model):
+    name=models.CharField(
+        verbose_name="name", 
+        max_length=50)
+       

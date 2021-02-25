@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+
+
+{% block main_content %}
     <h1>{{pk}}</h1>
-    <table border="1">
+    <table class="table table-striped table-bordered">
         <tr> 
             <td> pk </td> 
             <td> genres </td> 
@@ -22,16 +22,14 @@
             <td><a href="/genres-cbv/{{ auth.pk }}/"> {{ auth.genres }} </a></td> 
             <td> {{ auth.genres_description }} </td>   
               
-            <td> <a href="/genres-delete-cbv/{{ auth.pk }}/">  delete </a>
-                 <a href="/genres_update-cbv/{{ auth.pk }}/">  update </a>
+            <td> <a href="/genres-delete-cbv/{{ auth.pk }}/">  <i class="far fa-trash-alt"></i> </a> 
+                <a href="/genres_update-cbv/{{ auth.pk }}/">  <i class="fas fa-pen-alt"></i> </a>
             </td>   
         </tr>
         {% endfor %}
     </table>
-    <a href="/genres_create-cbv/"> Add </a>
+    <a href="/genres_create-cbv/"class="btn btn-success"> Add </a>
     
   
 
-
-</body>
-</html>
+    {% endblock main_content %}

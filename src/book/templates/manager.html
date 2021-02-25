@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+
+
+{% block main_content %}
+    <h1>Справочники </h1>
+         
+        {% for auth in object_list %}
+        {% endfor %}
+   
+    <a href="/cities-cbv/" class="btn btn-success"> Author </a>
+    <a href="/series-cbv/" class="btn btn-success"> Series </a>
+    <a href="/genres-cbv/" class="btn btn-success"> Genres </a>
+    <a href="/publisher-cbv/" class="btn btn-success"> Publisher </a>
+    
+
+   <h2> Kарточки товаров</h2>
+
+  <h3> Редактировать/обрабатывать заказы </h3>
+{% endblock main_content %}
+

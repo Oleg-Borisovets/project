@@ -5,24 +5,31 @@ from book.models import Author, Series, Genres, Publisher
 from django.urls import reverse, reverse_lazy
 from . import forms
 from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+#Create your views here.
 def cities_list(request):
     aut = Author.objects.all()
     context = {'aut': aut}
     return render(request, template_name='home.html', context=context)
 
-class citieslist(ListView):
-    model=Author   
+class citieslist(LoginRequiredMixin, ListView):
+    model=Author 
+    login_url = '/accs/login-lv/'
+    
+   # permission_required = ('book.add_author', 'book.delete_author')
+    
   
 def cities_detail(request, pk):
     aut_1 = Author.objects.get(pk=pk)
     context = {'object': aut_1}
     return render(request, template_name='detail.html', context=context) 
 
-class CiteDetail(DetailView):
+class CiteDetail(LoginRequiredMixin, DetailView):
     model=Author
+    login_url = '/accs/login-lv/'
 
 def city_delete(request, pk):
     aut_1 = Author.objects.get(pk=pk)
@@ -31,10 +38,11 @@ def city_delete(request, pk):
     context = {'message': message}
     return render(request, template_name='delete.html', context=context)    
 
-class CitiesDelete(DeleteView):
+class CitiesDelete(LoginRequiredMixin, DeleteView):
     success_url=reverse_lazy('cities-cbv')
    
     model=Author
+    login_url = '/accs/login-lv/'
      
 
 def city_create(request):
@@ -52,10 +60,11 @@ def city_create(request):
     
     return render(request, template_name='create.html', context=context)      
 
-class CityCreate(CreateView):
+class CityCreate(LoginRequiredMixin, CreateView):
     model=Author
     success_url=reverse_lazy('cities-cbv')
-    fields=("Author_name", "Author_description")
+    fields=("Author_name", 'pic', "Author_description")
+    login_url = '/accs/login-lv/'
     #form_class = forms.CityForm # можно подкинуть свою форму всесто той которая на предыдущей строке 
 
 
@@ -76,84 +85,96 @@ def city_update(request, pk):
     return render(request, template_name='update.html', context=context)     
 
 
-class CityUpdate(UpdateView):
+class CityUpdate(LoginRequiredMixin, UpdateView):
     model=Author
     success_url=reverse_lazy('cities-cbv')
-    fields=("Author_name", "Author_description")    
+    fields=("Author_name", "Author_description")
+    login_url = '/accs/login-lv/'    
 
 
-class Serieslist(ListView):
+class Serieslist(LoginRequiredMixin, ListView):
     model=Series
+    login_url = '/accs/login-lv/'
     
-class SeriesDetail(DetailView):
-    model=Series    
+class SeriesDetail(LoginRequiredMixin, DetailView):
+    model=Series
+    login_url = '/accs/login-lv/'
 
-class SeriesDelete(DeleteView):
+class SeriesDelete(LoginRequiredMixin, DeleteView):
     success_url=reverse_lazy('series-cbv')
     model=Series    
+    login_url = '/accs/login-lv/'
 
-class SeriesCreate(CreateView):
+class SeriesCreate(LoginRequiredMixin, CreateView):
     model=Series
     success_url=reverse_lazy('series-cbv')
-    fields=("series", "series_description")    
+    fields=("series", "series_description")   
+    login_url = '/accs/login-lv/' 
 
-class SeriesUpdate(UpdateView):
+class SeriesUpdate(LoginRequiredMixin, UpdateView):
     model=Series
     success_url=reverse_lazy('series-cbv')
-    fields=("series", "series_description")      
+    fields=("series", "series_description")  
+    login_url = '/accs/login-lv/'    
 
 
-class Genreslist(ListView):
+class Genreslist(LoginRequiredMixin, ListView):
     model=Genres
+    login_url = '/accs/login-lv/'
     
-class GenresDetail(DetailView):
-    model=Genres    
+class GenresDetail(LoginRequiredMixin, DetailView):
+    model=Genres  
+    login_url = '/accs/login-lv/'  
 
-class GenresDelete(DeleteView):
+class GenresDelete(LoginRequiredMixin, DeleteView):
     success_url=reverse_lazy('genres-cbv')
     model=Genres    
+    login_url = '/accs/login-lv/'
 
-class GenresCreate(CreateView):
+class GenresCreate(LoginRequiredMixin, CreateView):
     model=Genres
     success_url=reverse_lazy('genres-cbv')
-    fields=("genres", "genres_description")    
+    fields=("genres", "genres_description")
+    login_url = '/accs/login-lv/'    
 
-class GenresUpdate(UpdateView):
+class GenresUpdate(LoginRequiredMixin, UpdateView):
     model=Genres
     success_url=reverse_lazy('genres-cbv')
-    fields=("genres", "genres_description") 
+    fields=("genres", "genres_description")
+    login_url = '/accs/login-lv/' 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Publisherlist(ListView):
+class Publisherlist(LoginRequiredMixin, ListView):
     model=Publisher
+    login_url = '/accs/login-lv/'
     
-class PublisherDetail(DetailView):
+class PublisherDetail(LoginRequiredMixin, DetailView):
     model=Publisher    
+    login_url = '/accs/login-lv/'
 
-class PublisherDelete(DeleteView):
+class PublisherDelete(LoginRequiredMixin, DeleteView):
     success_url=reverse_lazy('publisher-cbv')
-    model=Publisher    
+    model=Publisher   
+    login_url = '/accs/login-lv/' 
 
-class PublisherCreate(CreateView):
+class PublisherCreate(LoginRequiredMixin, CreateView):
     model=Publisher
     success_url=reverse_lazy('publisher-cbv')
     fields=("publisher", "publisher_description")    
+    login_url = '/accs/login-lv/'
 
-class PublisherUpdate(UpdateView):
+class PublisherUpdate(LoginRequiredMixin, UpdateView): 
     model=Publisher
     success_url=reverse_lazy('publisher-cbv')
     fields=("publisher", "publisher_description") 
+    login_url = '/accs/login-lv/'
+
+#домашняя страница 
+def home_page(request):
+    return render(request, template_name="home_page.html")
+
+# Страничка менеджера 
+@login_required(login_url='/accs/login-lv/')
+def manager(request):
+    return render(request, template_name="manager.html")
+

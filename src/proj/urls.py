@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from book.views import cities_list
 from book.views import cities_detail
 from book.views import city_delete
@@ -22,19 +22,26 @@ from book.views import city_create
 from book.views import city_update
 from book.views import CiteDetail, citieslist, CitiesDelete, CityUpdate, Serieslist, SeriesDelete, SeriesCreate, SeriesUpdate, Genreslist, GenresDelete, GenresCreate, GenresUpdate, Publisherlist, PublisherDelete, PublisherCreate, PublisherUpdate  
 from book import views
+from book.views import home_page, manager
+from accs import urls as accs_urls 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),# 127.0.0.1:8000/admin/
+    path('', home_page),# дамашняя страница (127.0.0.1:8000)
+    path('manager/', manager,  name=('manager')),# страница менеджера 
+
+    
 
     path('cities/', views.cities_list),
     path('cities-cbv/', views.citieslist.as_view(),  name=('cities-cbv')),
     path('cities/<int:pk>/', views.cities_detail),
     path('cities-cbv/<int:pk>/', views.CiteDetail.as_view(), name=('cities-Detail')),
     path('city_delete/<int:pk>/', views.city_delete),
-    path('city_delete-cbv/<int:pk>/', views.CitiesDelete.as_view()),
+    path('city_delete-cbv/<int:pk>/', views.CitiesDelete.as_view(), name=('city_delete-cbv')),
     path('city_create/', views.city_create),
     path('city_create-cbv/', views.CityCreate.as_view()),
     path('city_update/<int:pk>/', views.city_update),
-    path('city_update-cbv/<int:pk>/', views.CityUpdate.as_view()),
+    path('city_update-cbv/<int:pk>/', views.CityUpdate.as_view(), name=('city_update-cbv')),
 
     path('series-cbv/', views.Serieslist.as_view(),  name=('series-cbv')),
     path('series-cbv/<int:pk>/', views.SeriesDetail.as_view(), name=('sities-detail')),
@@ -53,4 +60,6 @@ urlpatterns = [
     path('publisher-delete-cbv/<int:pk>/', views.PublisherDelete.as_view(), name=('publisher-delete-cbv')),
     path('publisher_create-cbv/', views.PublisherCreate.as_view(), name=('publisher_create-cbv')),
     path('publisher_update-cbv/<int:pk>/', views.PublisherUpdate.as_view(), name=('publisher_update-cbv')),
+
+    path('accs/', include(accs_urls)),
 ]
