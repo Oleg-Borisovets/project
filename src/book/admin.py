@@ -1,6 +1,6 @@
 from django.contrib import admin
 from . import models
-from .models import Author, Series, Genres, Publisher
+from .models import Author, Series, Genres, Publisher, Book
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = [
@@ -29,7 +29,18 @@ class PublisherAdmin(admin.ModelAdmin):
         'publisher',
         'publisher_description'
     ] 
+
+class BookAdmin(admin.ModelAdmin):
+    list_display = [
+        'pk',
+        'name',
+        'Price',
+        'Author',      
+    ] 
+
 admin.site.register(Author, AuthorAdmin )
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Genres, GenresAdmin)
 admin.site.register(Publisher, PublisherAdmin)
+admin.site.register(Book, BookAdmin)
+

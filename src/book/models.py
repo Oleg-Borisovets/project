@@ -7,9 +7,9 @@ class Author(models.Model):
         verbose_name="name", 
         max_length=50)
         # Для того что бы сделать фото 
-    pic = models.ImageField(
-        verbose_name='Picture',
-        upload_to = 'uploads/')    
+    # pic = models.ImageField(
+    #     verbose_name='Picture',
+    #     upload_to = 'uploads/')    
     Author_description = models.TextField(
         verbose_name= "description",
         null=True,
@@ -67,8 +67,38 @@ class Publisher(models.Model):
 
 
 # карточка товара 
-class book(models.Model):
-    name=models.CharField(
+class Book(models.Model):
+# Название книги
+    name = models.CharField(
         verbose_name="name", 
-        max_length=50)
-       
+        max_length=50)     
+# Фото обложки  
+    # pic = models.ImageField(
+    #     verbose_name='Picture',
+    #     upload_to = 'uploads/')
+# Цена (BYN)
+    Price = models.PositiveSmallIntegerField(
+        verbose_name="Price")
+# Авторы книги (может содержать несколько авторов) - справочни
+    Author = models.ForeignKey(
+        'book.Author',
+        verbose_name='Author',
+        on_delete=models.PROTECT,
+        related_name='Author1'
+    )
+# Серия - справочник
+# Жанры (один или несколько жанров) - справочник
+# Год издания
+# Страниц
+# Переплет
+# Формат
+# ISBN
+# Вес (гр)
+# Возрастные ограничения
+# Издательство - справочник
+# Количество книг в наличии
+# Активный (доступен для заказа, Да/Нет)
+# Рейтинг (0 - 10)
+# Дата внесения в каталог
+# Дата последнего изменения карточки
+

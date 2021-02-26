@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from book.models import Author, Series, Genres, Publisher
+from book.models import Author, Series, Genres, Publisher, Book
 from django.urls import reverse, reverse_lazy
 from . import forms
 from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
@@ -63,7 +63,7 @@ def city_create(request):
 class CityCreate(LoginRequiredMixin, CreateView):
     model=Author
     success_url=reverse_lazy('cities-cbv')
-    fields=("Author_name", 'pic', "Author_description")
+    fields=("Author_name",  "Author_description")
     login_url = '/accs/login-lv/'
     #form_class = forms.CityForm # можно подкинуть свою форму всесто той которая на предыдущей строке 
 
@@ -178,3 +178,8 @@ def home_page(request):
 def manager(request):
     return render(request, template_name="manager.html")
 
+
+
+class Booklist(ListView):
+    model=Book
+    

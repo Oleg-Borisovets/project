@@ -24,6 +24,8 @@ from book.views import CiteDetail, citieslist, CitiesDelete, CityUpdate, Seriesl
 from book import views
 from book.views import home_page, manager
 from accs import urls as accs_urls 
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),# 127.0.0.1:8000/admin/
@@ -61,5 +63,9 @@ urlpatterns = [
     path('publisher_create-cbv/', views.PublisherCreate.as_view(), name=('publisher_create-cbv')),
     path('publisher_update-cbv/<int:pk>/', views.PublisherUpdate.as_view(), name=('publisher_update-cbv')),
 
-    path('accs/', include(accs_urls)),
+    path('accs/', include(accs_urls)),#для логина 
+
 ]
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # для фото 

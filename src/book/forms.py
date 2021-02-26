@@ -4,7 +4,7 @@ from . import models
 class CityForm(forms.ModelForm):
     class Meta:
         model=models.Author
-        fields=('Author_name', 'pic', 'Author_description')
+        fields=('Author_name',  'Author_description')
     
 class CityForm(forms.ModelForm):
     class Meta:
@@ -19,7 +19,12 @@ class CityForm(forms.ModelForm):
 class CityForm(forms.ModelForm):
     class Meta:
         model=models.Publisher
-        fields=('publisher',  'publisher_description')                 
+        fields=('publisher',  'publisher_description')          
 
+
+# class BookForm(forms.ModelForm):
+#     class Meta:
+#         model=models.Book
+#         fields=('name') 
     
     
