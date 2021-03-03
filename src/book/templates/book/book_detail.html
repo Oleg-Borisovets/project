@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+{% load static %}
+{% block main_content %}
+
+
+
+    <h1>name {{object.name|default:"Description is empty "}}</h1>
+    
+    <a href="/book/"class="btn btn-success">All</a>
+
+    <img src="{{object.pic.url}}">
+    
+    <br>price {{object.price}}</br>
+    <br>binding{{object.binding}}</br>
+    <br>format {{object.format}}</br>
+    <br>isbn {{object.isbn}}</br>
+    <br>pages {{object.pages}}</br>
+    <br>the_weight {{object.the_weight}}</br>
+    <br>age_restrictions {{object.age_restrictions}}</br>
+    <br>amount {{object.amount}}</br>
+    <br>rating{{object.rating}}</br>
+    <br>author {{object.author }}</br>
+    <br>series {{object.series }}</br>
+    <br>genres {{object.genres }}</br>
+    <br>publisher {{object.publisher }}</br>
+    <br>created {{object.created }}</br>
+    <br>update {{object.update }}</br>
+    <br>year_edition {{object.year_edition }}</br>
+    <br>active {{object.active }}</br>
+    
+
+
+
+
+
+
+
+    {% endblock main_content %}

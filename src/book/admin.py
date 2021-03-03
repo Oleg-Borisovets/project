@@ -5,8 +5,8 @@ from .models import Author, Series, Genres, Publisher, Book
 class AuthorAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
-        'Author_name',
-        'Author_description'
+        'author_name',
+        'author_description'
     ]
 
 class SeriesAdmin(admin.ModelAdmin):
@@ -34,13 +34,34 @@ class BookAdmin(admin.ModelAdmin):
     list_display = [
         'pk',
         'name',
-        'Price',
-        'Author',      
+        'pic',
+        'price',
+        'binding',
+        'format',
+        'isbn',
+        'pages',
+        'the_weight',
+        'age_restrictions',
+        'amount',
+        'rating',
+        'author',
+        'series',
+        'genres',
+        'publisher',
+        'created',
+        'update',
+        'year_edition',
+        'active'
+        
+        
+        
     ] 
+
 
 admin.site.register(Author, AuthorAdmin )
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Genres, GenresAdmin)
 admin.site.register(Publisher, PublisherAdmin)
 admin.site.register(Book, BookAdmin)
+
 

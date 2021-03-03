@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+{% load static %}
+{% block main_content %}
+
+    <h1>Delete</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+      
+        <button class="btn btn-success">Delete</button>
+        
+        <a href="/book/"class="btn btn-danger">All</a><br>
+      
+
+        
+    </form>     
+    
+    
+    {% endblock main_content %}

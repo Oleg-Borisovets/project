@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from book.views import cities_list
-from book.views import cities_detail
-from book.views import city_delete
-from book.views import city_create
-from book.views import city_update
+# from book.views import cities_list
+# from book.views import cities_detail
+# from book.views import city_delete
+# from book.views import city_create
+# from book.views import city_update
 from book.views import CiteDetail, citieslist, CitiesDelete, CityUpdate, Serieslist, SeriesDelete, SeriesCreate, SeriesUpdate, Genreslist, GenresDelete, GenresCreate, GenresUpdate, Publisherlist, PublisherDelete, PublisherCreate, PublisherUpdate  
 from book import views
 from book.views import home_page, manager
@@ -34,15 +34,15 @@ urlpatterns = [
 
     
 
-    path('cities/', views.cities_list),
+    # path('cities/', views.cities_list),
     path('cities-cbv/', views.citieslist.as_view(),  name=('cities-cbv')),
-    path('cities/<int:pk>/', views.cities_detail),
+    # path('cities/<int:pk>/', views.cities_detail),
     path('cities-cbv/<int:pk>/', views.CiteDetail.as_view(), name=('cities-Detail')),
-    path('city_delete/<int:pk>/', views.city_delete),
+    # path('city_delete/<int:pk>/', views.city_delete),
     path('city_delete-cbv/<int:pk>/', views.CitiesDelete.as_view(), name=('city_delete-cbv')),
-    path('city_create/', views.city_create),
+    # path('city_create/', views.city_create),
     path('city_create-cbv/', views.CityCreate.as_view()),
-    path('city_update/<int:pk>/', views.city_update),
+    # path('city_update/<int:pk>/', views.city_update),
     path('city_update-cbv/<int:pk>/', views.CityUpdate.as_view(), name=('city_update-cbv')),
 
     path('series-cbv/', views.Serieslist.as_view(),  name=('series-cbv')),
@@ -65,7 +65,14 @@ urlpatterns = [
 
     path('accs/', include(accs_urls)),#для логина 
 
+    path('book/', views.Booklist.as_view(), name=('book')),#карточка товара 
+    path('book-cbv/<int:pk>/', views.BookDetail.as_view(), name=('book-detail')),
+    path('book-delete-cbv/<int:pk>/', views.BookDelete.as_view(), name=('book-delete-cbv')),
+    path('book-create-cbv/', views.BookCreate.as_view(), name=('book-create-cbv')),
+    path('book-update-cbv/<int:pk>/', views.BookUpdate.as_view(), name=('book-update-cbv')),
+
+
 ]
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # для фото 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # для фото 

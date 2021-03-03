@@ -4,7 +4,7 @@ from . import models
 class CityForm(forms.ModelForm):
     class Meta:
         model=models.Author
-        fields=('Author_name',  'Author_description')
+        fields=('author_name',  'author_description')
     
 class CityForm(forms.ModelForm):
     class Meta:
@@ -22,9 +22,15 @@ class CityForm(forms.ModelForm):
         fields=('publisher',  'publisher_description')          
 
 
-# class BookForm(forms.ModelForm):
-#     class Meta:
-#         model=models.Book
-#         fields=('name') 
+class BookForm(forms.ModelForm):
+    class Meta:
+        model=models.Book
+        fields=( 'name', 'pic', 'price', 'binding', 'format', 'isbn', 'pages', 'the_weight', 'age_restrictions',
+        'amount', 'rating', 'author','series','genres','publisher','year_edition','active') 
     
-    
+class SearchForm(forms.Form):
+    q = forms.CharField(label="")
+    field = forms.CharField(widget=forms.HiddenInput)
+    direction = forms.CharField(widget=forms.HiddenInput)
+
+     
