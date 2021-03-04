@@ -220,8 +220,6 @@ class Booklist(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = "Book"
-       
-
         field_to_sort_on = self.request.GET.get('field')
         direction_to_sort_on = self.request.GET.get('direction')
         q = self.request.GET.get('q') 
