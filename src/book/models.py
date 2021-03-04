@@ -197,4 +197,15 @@ class Book(models.Model):
     active = models.BooleanField(
         verbose_name="Active")
 
-       
+
+
+class Home(models.Model):
+    pass
+    # Название книги
+    # name = models.CharField(
+    #     verbose_name="name",
+    #     max_length=20  
+    # )
+    # author_name = models.CharField(
+    #     verbose_name="name", 
+    #     max_length=50)       

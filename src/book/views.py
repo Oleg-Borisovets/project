@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from book.models import Author, Series, Genres, Publisher, Book
+from book.models import Author, Series, Genres, Publisher, Book, Home
 from django.urls import reverse, reverse_lazy
 from . import forms
 from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
@@ -175,8 +175,12 @@ class PublisherUpdate(LoginRequiredMixin, UpdateView):
     login_url = '/accs/login-lv/'
 
 #домашняя страница 
-def home_page(request):
-    return render(request, template_name="home_page.html")
+# def home_page(request):
+#     return render(request, template_name="home_page.html")
+
+class Home(ListView):
+    model=Home
+    
 
 # Страничка менеджера 
 @login_required(login_url='/accs/login-lv/')

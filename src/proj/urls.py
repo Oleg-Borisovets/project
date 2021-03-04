@@ -22,15 +22,19 @@ from django.urls import path, include
 # from book.views import city_update
 from book.views import CiteDetail, citieslist, CitiesDelete, CityUpdate, Serieslist, SeriesDelete, SeriesCreate, SeriesUpdate, Genreslist, GenresDelete, GenresCreate, GenresUpdate, Publisherlist, PublisherDelete, PublisherCreate, PublisherUpdate  
 from book import views
-from book.views import home_page, manager
+from book.views import  manager, Home
 from accs import urls as accs_urls 
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),# 127.0.0.1:8000/admin/
-    path('', home_page),# дамашняя страница (127.0.0.1:8000)
+    # path('', home_page),# дамашняя страница (127.0.0.1:8000)
     path('manager/', manager,  name=('manager')),# страница менеджера 
+
+
+    path('', views.Home.as_view(),  name=('home')),
+
 
     
 

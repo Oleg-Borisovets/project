@@ -33,4 +33,10 @@ class SearchForm(forms.Form):
     field = forms.CharField(widget=forms.HiddenInput)
     direction = forms.CharField(widget=forms.HiddenInput)
 
-     
+class Home(forms.Form):
+    pass
+    # class Meta:
+    #     model=models.Book
+    #     fields=( 'name')
+    #     model=models.Author
+    #     fields=('author_name')
