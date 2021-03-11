@@ -160,7 +160,7 @@ footer p {
         {% endfor %}
       </ul>    
     </div>
-
+    <h1>Новинки авторов</h1>
     <div class="card" style="width: 18rem;">
       <ul class="list-group list-group-flush">
         {% for au in author %} 
@@ -189,7 +189,7 @@ footer p {
         {% for bo in book %}
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
+              <img src="..." class="card-img-top" alt={{bo.pic}}>
               <div class="card-body">
                 <h5 class="card-title">{{ bo.name }}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -198,7 +198,7 @@ footer p {
             </div>
           </div>
         </div>
-
+       
         {% endfor %}
         
 
