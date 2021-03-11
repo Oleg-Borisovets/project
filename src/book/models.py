@@ -88,7 +88,7 @@ class Publisher(models.Model):
 
 class Book(models.Model):
     # Название книги
-    name = models.CharField(
+    name = models.TextField(
         verbose_name="name",
         max_length=50  
     )         
