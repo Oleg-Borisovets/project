@@ -149,10 +149,16 @@ footer p {
 <!-- <main role="main">
   <section class="jumbotron text-center"> -->
 
-    <h1>Новинки книг</h1>
     
 
-    <div class="card" style="width: 18rem;">
+    
+
+    <div class="album py-5 bg-light">
+      
+      <div class="container">
+        <div class="row">
+      <div class="card" style="width: 18rem;">
+        <h1>Новинки книг</h1>
       <ul class="list-group list-group-flush">
         {% for bo in book_n %} 
 
@@ -160,9 +166,13 @@ footer p {
         {% endfor %}
       </ul>    
     </div>
-    <h1>Новинки авторов</h1>
+  
+
+    
     <div class="card" style="width: 18rem;">
+      <h2>Новинки авторов</h2>
       <ul class="list-group list-group-flush">
+        
         {% for au in author %} 
 
         <li class="list-group-item"> {{ au.author_name }}</li>
@@ -170,8 +180,9 @@ footer p {
       </ul>    
     </div>
     
-
-
+  </div>
+</div>
+</div>
 
     
   <!-- </section> -->
@@ -193,7 +204,7 @@ footer p {
               <div class="card-body">
                 <h5 class="card-title">{{ bo.name }}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">Add to cart</a>
                 
             </div>
           </div>
