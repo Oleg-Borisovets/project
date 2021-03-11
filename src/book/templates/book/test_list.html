@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+
+
+{% block main_content %}
+    <h1>{{pk}}</h1>
+
+
+    <table class="table table-striped table-bordered">
+        <tr> 
+            <td> pk </td> 
+            <td> name </td> 
+            <td> author </td>    
+                
+           
+        </tr>
+      
+      
+    </table>
+   
+{% endblock main_content %}
+

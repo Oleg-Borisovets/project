@@ -1,4 +1,6 @@
 {% load static %}
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -119,6 +121,7 @@ footer p {
         <svg xmlns="" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"></svg>
 
         <strong> ShopBook </strong>
+       
         <a class="navbar-brand" href="/manager/">Manager</a>
         <a class="navbar-brand" href="#">Жанры</a>
         
@@ -139,70 +142,65 @@ footer p {
   </div>
 </header>
 
-<main role="main">
 
-  <section class="jumbotron text-center">
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="10000">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item" data-bs-interval="2000">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="..." class="d-block w-100" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"  data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"  data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+
+
+
+<!-- <main role="main">
+  <section class="jumbotron text-center"> -->
+
+    <h1>Новинки книг</h1>
+    
+
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        {% for bo in book_n %} 
+
+        <li class="list-group-item"> {{ bo.name }}</li>
+        {% endfor %}
+      </ul>    
     </div>
-  </section>
+
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        {% for au in author %} 
+
+        <li class="list-group-item"> {{ au.author_name }}</li>
+        {% endfor %}
+      </ul>    
+    </div>
+    
 
 
 
+    
+  <!-- </section> -->
+  
 
+  <h1>Все книги </h1>
 
+  
+  
+ 
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
+
+        {% for bo in book %}
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
               <img src="..." class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">{{ bo.name }}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 
-
             </div>
           </div>
         </div>
 
-
-
+        {% endfor %}
         
-        <div class="col-md-4">
-            
-              <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                
-            </div>
-          </div>
-        </div>
-
-
 
 
 

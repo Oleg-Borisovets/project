@@ -24,6 +24,8 @@ from book.views import CiteDetail, citieslist, CitiesDelete, CityUpdate, Seriesl
 from book import views
 from book.views import  manager, Home
 from accs import urls as accs_urls 
+from cart import urls as cart_urls 
+
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -34,6 +36,8 @@ urlpatterns = [
 
 
     path('', views.Home.as_view(),  name=('home')),
+    # path('test/', views.Test.as_view(),  name=('Test')),
+
 
 
     
@@ -68,6 +72,7 @@ urlpatterns = [
     path('publisher_update-cbv/<int:pk>/', views.PublisherUpdate.as_view(), name=('publisher_update-cbv')),
 
     path('accs/', include(accs_urls)),#для логина 
+    path('cart/', include(cart_urls)),
 
     path('book/', views.Booklist.as_view(), name=('book')),#карточка товара 
     path('book-cbv/<int:pk>/', views.BookDetail.as_view(), name=('book-detail')),

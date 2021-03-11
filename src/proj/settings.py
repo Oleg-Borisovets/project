@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'book',
     'accs',
+    'cart',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,4 @@ MEDIA_ROOT = BASE_DIR/ 'media' # /home/user/media
                                #/home/user/djanga/src
 STATIC_ROOT='/home/ShopBook/project/static'  
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+COMPANY_NAME = "SHOP BOOK"

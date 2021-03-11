@@ -40,3 +40,6 @@ class Home(forms.Form):
     #     fields=( 'name')
     #     model=models.Author
     #     fields=('author_name')
+
+class Test(forms.Form):
+    pass

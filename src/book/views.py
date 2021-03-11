@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from book.models import Author, Series, Genres, Publisher, Book, Home
+from book.models import Author, Series, Genres, Publisher, Book
 from django.urls import reverse, reverse_lazy
 from . import forms
-from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView
+from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from book import models as book_models
+
+
+
+
+
 
 
 #Create your views here.
@@ -178,9 +184,25 @@ class PublisherUpdate(LoginRequiredMixin, UpdateView):
 # def home_page(request):
 #     return render(request, template_name="home_page.html")
 
-class Home(ListView):
-    model=Home
+# class Home(ListView):
+#     model=Home
     
+
+# class Test(ListView):
+#     model=Test
+
+class Home(TemplateView):
+    template_name = "home_page.html"
+
+      
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["book"]= Book.objects.all()
+        context["book_n"]= Book.objects.all().order_by("-pk")[:5]
+        context["author"]= Author.objects.all().order_by("-pk")[:5]
+
+        return context
+
 
 # Страничка менеджера 
 @login_required(login_url='/accs/login-lv/')
@@ -216,7 +238,7 @@ class Booklist(LoginRequiredMixin, ListView):
         q = self.request.GET.get('q') 
         qs = super().get_queryset()
         if q:
-           qs = qs.filter(name__icontains=q)
+           qs = qs.filter(name__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
         return qs
 
       

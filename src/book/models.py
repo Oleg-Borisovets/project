@@ -199,8 +199,8 @@ class Book(models.Model):
 
 
 
-class Home(models.Model):
-    pass
+# class Home(models.Model):
+#     pass
     # Название книги
     # name = models.CharField(
     #     verbose_name="name",
@@ -208,4 +208,9 @@ class Home(models.Model):
     # )
     # author_name = models.CharField(
     #     verbose_name="name", 
-    #     max_length=50)       
+    #     max_length=50)
+
+# class Test(models.Model):
+#     pass   
+
+

@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
+
+
+
+
 {% block title %}
 {{Document}}
 {% endblock title %}
+
+
+
 
 
 {% block main_content %}
@@ -41,8 +48,9 @@
         <tr> 
             <td> pk </td> 
             <td> name </td> 
-            <td> description </td>    
-            <td> actions </td>    
+            <td> description </td> 
+            <td> actions </td>
+                 
            
         </tr>
       
@@ -50,7 +58,10 @@
         <tr>
             <td> {{ auth.pk }}</td> 
             <td><a href="/cities-cbv/{{ auth.pk }}/"> {{ auth.author_name }} </a></td> 
-            <td> {{ auth.author_description }} </td>   
+            <td> {{ auth.author_description }} </td>
+            
+
+            
               
             <td> <a href="/city_delete-cbv/{{ auth.pk }}/">  <i class="far fa-trash-alt"></i> </a> 
                  <a href="/city_update-cbv/{{ auth.pk }}/">  <i class="fas fa-pen-alt"></i> </a>

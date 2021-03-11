@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
+
+
+{% load ref_tags %}
+
+
+
 {% block title %}
 {{Document}}
 
@@ -48,13 +54,7 @@
         <tr> 
 
             <td><a href="?field=pk&direction={% if field_to_sort_on == 'pk' and direction_to_sort_on == 'up' %}down{% else %}up{% endif %}"> pk
-                {% if field_to_sort_on == 'pk' and direction_to_sort_on == 'up' %}
-                    <i class="fas fa-angle-up"></i>
-                {% elif field_to_sort_on == 'pk' and direction_to_sort_on == 'down' %}
-                    <i class="fas fa-angle-down"></i>
-                {% else %}
-                    
-                {% endif %}
+              {% arrow 'pk' field_to_sort_on direction_to_sort_on %}
                 </a></td>
 
 
