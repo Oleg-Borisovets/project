@@ -90,7 +90,7 @@ class Book(models.Model):
     # Название книги
     name = models.CharField(
         verbose_name="name",
-        max_length=20  
+        max_length=30  
     )         
 
     # Фото обложки  
