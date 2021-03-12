@@ -72,7 +72,7 @@ urlpatterns = [
     path('publisher_update-cbv/<int:pk>/', views.PublisherUpdate.as_view(), name=('publisher_update-cbv')),
 
     path('accs/', include(accs_urls)),#для логина 
-    path('cart/', include(cart_urls)),
+    path('cart/', include(cart_urls, namespace="cart")),
 
     path('book/', views.Booklist.as_view(), name=('book')),#карточка товара 
     path('book-cbv/<int:pk>/', views.BookDetail.as_view(), name=('book-detail')),

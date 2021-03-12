@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+{% load static %}
+{% block main_content %}
+
+
+    <h1>{{request.session.current_cart_pk}}</h1>
+    {{ object }}<br><hr>
+    {% for book_in_cart in object.book.all %}
+    {{ book_in_cart.book.name }}<br>
+    {{ book_in_cart.quantity }}<br>
+    {% endfor %}
+
+
+    {% endblock main_content %}

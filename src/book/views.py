@@ -200,8 +200,17 @@ class Home(TemplateView):
         context["book"]= Book.objects.all()
         context["book_n"]= Book.objects.all().order_by("-pk")[:5]
         context["author"]= Author.objects.all().order_by("-pk")[:5]
-
         return context
+
+
+    
+
+
+
+
+
+
+
 
 
 # Страничка менеджера 
