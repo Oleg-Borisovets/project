@@ -123,15 +123,15 @@ footer p {
         <strong> ShopBook </strong>
        
         <a class="navbar-brand" href="/manager/">Manager</a>
-        <a class="navbar-brand" href="#">Жанры</a>
+        <!-- <a class="navbar-brand" href="#">Жанры</a> -->
         
-        <a class="navbar-brand" href="#">Авторы</a>
+        <!-- <a class="navbar-brand" href="#">Авторы</a>
 
         <div class="btn-group">
           <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
           <a href="#" class="btn btn-primary">Link</a>
           <a href="#" class="btn btn-primary">Link</a>
-        </div>
+        </div> -->
 
 
         </a>
@@ -153,12 +153,12 @@ footer p {
 
     
 
-    <div class="album py-5 bg-light">
+    <!-- <div class="album py-5 bg-light">
       
       <div class="container">
         <div class="row">
-          <div class="card" style="width: 18rem;">
-            <h2>Новинки книг</h2>
+          <div class="card" style="width: 18rem;"> -->
+            <!-- <h2>Новинки книг</h2>
       <ul class="list-group list-group-flush">
         {% for bo in book_n %} 
         <li class="list-group-item"> {{ bo.name }}</li>
@@ -167,8 +167,8 @@ footer p {
       </ul>    
     </div>
      
-    <div class="card" style="width: 18rem;">
-      <h2>Новинки авторов</h2>
+    <div class="card" style="width: 18rem;"> -->
+      <!-- <h2>Новинки авторов</h2>
       <ul class="list-group list-group-flush">
         
         {% for au in author %} 
@@ -176,17 +176,79 @@ footer p {
         <li class="list-group-item"> {{ au.author_name }}</li>
         {% endfor %}
       </ul>    
-    </div>
+    </div> -->
     
-  </div>
+  <!-- </div>
 </div>
-</div>
+</div> -->
 
-    
+
+
+
+
+
+<h2>Новинки авторов</h2>
+<head>
+  <meta charset="utf-8">
+  <title>Горизонтальный список</title>
+  <style>
+   ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+   ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 3px; /* Поля вокруг текста */
+   }
+  </style>
+ </head>
+ <body>
+  <ul class="hr">
+    {% for au in author %} 
+   <li>{{ au.author_name }}</li>
+   {% endfor %}
+  </ul>
+ </body>
+
+
+
+
+ 
+
+
+<!-- {% for au in author %} 
+
+<li class="list-group-item"> {{ au.author_name }}</li>
+{% endfor %} -->
+
+<h2>Новинки книг</h2>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+
+      {% for bo in book_n %} 
+      <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img src="{{bo.pic.url}}" class="card-img-top" alt={{bo.pic}}>
+            <div class="card-body">
+              <h5 class="card-title">{{ bo.name }}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="{% url 'cart:add-to-cart' %}?book={{ bo.pk }}" class="btn btn-primary">Add to cart</a>
+              
+          </div>
+        </div>
+      </div>
   
+      {% endfor %}
 
 
-<h1>111111111111</h1>
+    </div>
+
+
+<h1></h1>
      
 <form action="{{current_url}}" method="get">
     {{ search_form|crispy }}
@@ -217,100 +279,12 @@ footer p {
         </div>
        
         {% endfor %}
+         
+
+
+
+
         
- 
-       
-      
-
-
-
-
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            
-            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" src="{{object.pic.url}}"  height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>{{object.name|default:"Description is empty "}}</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-            <img src="{{object.pic.url}}" class="card-img-top" alt="{{object.price}}"/>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
             </div>
           </div>
         </div>
@@ -329,11 +303,11 @@ footer p {
     <p class="float-right">
       <a href="#">Back to top</a>
     </p>
-    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <!-- <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
     <p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="/docs/4.5/getting-started/introduction/">getting started guide</a>.</p>
   </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
       
       <script src="{% static 'book/js/bootstrapHome.bundle.min.js' %}" </script>
     </body>
