@@ -35,11 +35,4 @@ class SearchForm(forms.Form):
 
 class Home(forms.Form):
     pass
-    # class Meta:
-    #     model=models.Book
-    #     fields=( 'name')
-    #     model=models.Author
-    #     fields=('author_name')
 
-class Test(forms.Form):
-    pass

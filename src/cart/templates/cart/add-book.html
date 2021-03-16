@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}
 {{Document}}
+
 {% endblock title %}
 {% load static %}
 {% block main_content %}
@@ -8,10 +9,38 @@
 
     <h1>{{request.session.current_cart_pk}}</h1>
     {{ object }}<br><hr>
-    {% for book_in_cart in object.book.all %}
-    {{ book_in_cart.book.name }}<br>
-    {{ book_in_cart.quantity }}<br>
-    {% endfor %}
+    <h1>Goods in the Cart </h1>
+    <form action="{% url 'cart:recalculate-cart' %}" method="GET">
+        
+        <table class = "table">
+        <thead>
+            <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Praice per unit</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            </tr>
+        </thead>
+        
+        {% for book_in_cart in object.book.all %}
+        <tr>
+            <td>{{ book_in_cart.book.name }}</td>
+            <td>{{ book_in_cart.book.price }}</td>
+            <td><input type="number" min=0 name="book_in_cart_{{book_in_cart.pk}}" value="{{ book_in_cart.quantity }}"></td>
+            <td>{{ book_in_cart.total_price }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+           
+            <td colspan="3"><b>Total</b></td>
+            <td colspan="3"><b>{{ object.total_summ }}</b></td>
+                
+            
+        </tr>
+    </table>
+    <button type="submit" name="btn" class="btn btn-success" value="recalculate">Recalculate</button>
+    <button type="submit" name="btn" class="btn btn-danger" value="checkout">Checkout</button>
+</form>
 
 
     {% endblock main_content %}
