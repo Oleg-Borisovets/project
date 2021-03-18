@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+{% block main_content %}
+
+
+<table class="table table-striped table-bordered">
+    <tr> 
+        <td> name </td> 
+        <td> description </td>             
+    </tr>
+
+    {% for Chec in object_list %}
+    <tr>
+        
+        <td> {{ Chec.name }} </td>
+        <td> {{ Chec.description }} </td>   
+          
+           
+    </tr>
+    {% endfor %}
+</table>
+<a href="/cart/checkoutCreate/" class="btn btn-success"> Add </a>
+
+</div>
+
+
+
+    <h1>Заказ</h1>
+    {% for Carts in BookInCart %} 
+    <li>{{ Carts.book.name }}</li>
+    <li>{{ Carts.quantity }}</li>
+    {% endfor %}
+
+    
+
+ 
+    
+</div>
+{% endblock main_content %}
+

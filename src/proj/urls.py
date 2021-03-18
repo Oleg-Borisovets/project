@@ -20,11 +20,13 @@ from django.urls import path, include
 # from book.views import city_delete
 # from book.views import city_create
 # from book.views import city_update
+
 from book.views import CiteDetail, citieslist, CitiesDelete, CityUpdate, Serieslist, SeriesDelete, SeriesCreate, SeriesUpdate, Genreslist, GenresDelete, GenresCreate, GenresUpdate, Publisherlist, PublisherDelete, PublisherCreate, PublisherUpdate  
 from book import views
 from book.views import  manager, Home
 from accs import urls as accs_urls 
-from cart import urls as cart_urls 
+from cart import urls as cart_urls
+from orders import urls as orders_urls 
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -37,7 +39,7 @@ urlpatterns = [
 
     path('', views.Home.as_view(),  name=('home')),
     # path('test/', views.Test.as_view(),  name=('Test')),
-
+   
 
 
     
@@ -73,6 +75,8 @@ urlpatterns = [
 
     path('accs/', include(accs_urls)),#для логина 
     path('cart/', include(cart_urls, namespace="cart")),
+    path('orders/', include(orders_urls, namespace="orders")),
+
 
     path('book/', views.Booklist.as_view(), name=('book')),#карточка товара 
     path('book-cbv/<int:pk>/', views.BookDetail.as_view(), name=('book-detail')),

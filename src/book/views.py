@@ -12,9 +12,6 @@ from book import models as book_models
 
 
 
-
-
-
 #Create your views here.
 # def cities_list(request):
 #     aut = Author.objects.all()
@@ -312,3 +309,11 @@ class BookUpdate(LoginRequiredMixin, UpdateView):
     fields=(  'name','price','binding','format','isbn','pages','the_weight','age_restrictions','amount','rating',
         'author','series','genres','publisher','year_edition','active','pic') 
     login_url = '/accs/login-lv/'
+
+
+
+
+
+
+
+         

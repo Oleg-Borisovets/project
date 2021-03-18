@@ -41,4 +41,4 @@ class BookInCart(models.Model):
         return f"BookInCart #{self.pk} {self.book.name} quantity {self.quantity}"   
     @property
     def total_price(self):
-        return self.book.price * self.quantity         
+        return self.book.price * self.quantity  
