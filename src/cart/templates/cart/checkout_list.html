@@ -29,7 +29,7 @@
 
 
     <h1>Заказ</h1>
-    {% for Carts in BookInCart %} 
+    {% for Carts in Cart %} 
     <li>{{ Carts.book.name }}</li>
     <li>{{ Carts.quantity }}</li>
     {% endfor %}

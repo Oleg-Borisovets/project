@@ -19,6 +19,7 @@
             <th scope="col">Praice per unit</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total</th>
+            
             </tr>
         </thead>
         
@@ -28,6 +29,7 @@
             <td>{{ book_in_cart.book.price }}</td>
             <td><input type="number" min=0 name="book_in_cart_{{book_in_cart.pk}}" value="{{ book_in_cart.quantity }}"></td>
             <td>{{ book_in_cart.total_price }}</td>
+            
         </tr>
         {% endfor %}
         <tr>
@@ -36,13 +38,40 @@
             <td colspan="3"><b>{{ object.total_summ }}</b></td>
                 
             
-        </tr>
-
+        </tr>       
        
     </table>
+
+
+
+    <table class = "table">
+        <thead>
+            <tr>
+            <th scope="col">Created</th>
+            <th scope="col">Update</th>
+            </tr>
+        </thead>
+        {% for book_in_cart in object.book.all %}
+        <tr>
+         
+            <td>{{ book_in_cart.created }}</td>
+            <td>{{ book_in_cart.update }}</td>
+        </tr>
+        {% endfor %}
+      
+    </table>
+
+
+
+
+
+    
     <button type="submit" name="btn" class="btn btn-success" value="recalculate">Recalculate</button>
-    <button type="submit" name="btn" class="btn btn-danger" value="checkout">Checkout</button>
+    <!-- <button type="submit" name="btn" class="btn btn-danger" value="checkout">Checkout</button> -->
+    <a href="/orders/orders-create/"class="btn btn-danger">Checkout</a><br>
 </form>
+
+
 
 
     {% endblock main_content %}

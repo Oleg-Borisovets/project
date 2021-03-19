@@ -37,6 +37,9 @@ class SearchForm(forms.Form):
     field = forms.CharField(widget=forms.HiddenInput)
     direction = forms.CharField(widget=forms.HiddenInput)
 
+
+
+
 class Home(forms.Form):
     pass
 

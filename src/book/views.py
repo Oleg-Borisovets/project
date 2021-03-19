@@ -22,6 +22,31 @@ class citieslist(LoginRequiredMixin, ListView):
     model=Author 
     login_url = '/accs/login-lv/'
     paginate_by = 5
+
+    def get_queryset(self):
+        q = self.request.GET.get('q') 
+        qs = super().get_queryset()
+        if q:
+           qs = qs.filter(author_name__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
+        return qs
+
+      
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = "Book"
+        field_to_sort_on = self.request.GET.get('field')
+        direction_to_sort_on = self.request.GET.get('direction')
+        q = self.request.GET.get('q') 
+        context['search_form'] = forms.SearchForm(
+            initial={
+                'q': q,
+                'field': field_to_sort_on,
+                'direction': direction_to_sort_on, 
+            })
+        context['field_to_sort_on'] = field_to_sort_on
+        context['direction_to_sort_on'] = direction_to_sort_on
+        return context
     
     
    # permission_required = ('book.add_author', 'book.delete_author')
@@ -101,6 +126,33 @@ class Serieslist(LoginRequiredMixin, ListView):
     model=Series
     login_url = '/accs/login-lv/'
     paginate_by = 5
+
+    def get_queryset(self):
+        q = self.request.GET.get('q') 
+        qs = super().get_queryset()
+        if q:
+           qs = qs.filter(series__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
+        return qs
+
+      
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = "Book"
+        field_to_sort_on = self.request.GET.get('field')
+        direction_to_sort_on = self.request.GET.get('direction')
+        q = self.request.GET.get('q') 
+        context['search_form'] = forms.SearchForm(
+            initial={
+                'q': q,
+                'field': field_to_sort_on,
+                'direction': direction_to_sort_on, 
+            })
+        context['field_to_sort_on'] = field_to_sort_on
+        context['direction_to_sort_on'] = direction_to_sort_on
+        return context
+
+    
     
 class SeriesDetail(LoginRequiredMixin, DetailView):
     model=Series
@@ -128,6 +180,32 @@ class Genreslist(LoginRequiredMixin, ListView):
     model=Genres
     login_url = '/accs/login-lv/'
     paginate_by = 5
+
+    def get_queryset(self):
+        q = self.request.GET.get('q') 
+        qs = super().get_queryset()
+        if q:
+           qs = qs.filter(genres__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
+        return qs
+
+      
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = "Book"
+        field_to_sort_on = self.request.GET.get('field')
+        direction_to_sort_on = self.request.GET.get('direction')
+        q = self.request.GET.get('q') 
+        context['search_form'] = forms.SearchForm(
+            initial={
+                'q': q,
+                'field': field_to_sort_on,
+                'direction': direction_to_sort_on, 
+            })
+        context['field_to_sort_on'] = field_to_sort_on
+        context['direction_to_sort_on'] = direction_to_sort_on
+        return context
+
     
 class GenresDetail(LoginRequiredMixin, DetailView):
     model=Genres  
@@ -155,6 +233,30 @@ class Publisherlist(LoginRequiredMixin, ListView):
     model=Publisher
     login_url = '/accs/login-lv/'
     paginate_by = 5
+    def get_queryset(self):
+        q = self.request.GET.get('q') 
+        qs = super().get_queryset()
+        if q:
+           qs = qs.filter(genres__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
+        return qs
+
+      
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = "Book"
+        field_to_sort_on = self.request.GET.get('field')
+        direction_to_sort_on = self.request.GET.get('direction')
+        q = self.request.GET.get('q') 
+        context['search_form'] = forms.SearchForm(
+            initial={
+                'q': q,
+                'field': field_to_sort_on,
+                'direction': direction_to_sort_on, 
+            })
+        context['field_to_sort_on'] = field_to_sort_on
+        context['direction_to_sort_on'] = direction_to_sort_on
+        return context
     
 class PublisherDetail(LoginRequiredMixin, DetailView):
     model=Publisher    
@@ -199,12 +301,34 @@ class Home(TemplateView):
         context["author"]= Author.objects.all().order_by("-pk")[:5]
         return context
 
-    def get_queryset(self):
-        q = self.request.GET.get('q') 
-        qs = super().get_queryset()
-        if q:
-            qs = qs.filter(name__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
-        return qs
+    # def get_queryset(self):
+    #     q = self.request.GET.get('q') 
+    #     qs = super().get_queryset()
+    #     if q:
+    #        qs = qs.filter(book_name__icontains=q) # что бы искала еще ко какому нибудь полю нужон написать это так  qs = qs.filter(Q('name__icontains=q') | знак озночает или Q('имя поля по которому искать__icontains=q'))
+    #     return qs
+
+      
+
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['page_title'] = "Book"
+    #     field_to_sort_on = self.request.GET.get('field')
+    #     direction_to_sort_on = self.request.GET.get('direction')
+    #     q = self.request.GET.get('q') 
+    #     context['search_form'] = forms.SearchForm(
+    #         initial={
+    #             'q': q,
+    #             'field': field_to_sort_on,
+    #             'direction': direction_to_sort_on, 
+    #         })
+    #     context['field_to_sort_on'] = field_to_sort_on
+    #     context['direction_to_sort_on'] = direction_to_sort_on
+    #     return context    
+
+    
+
+
     
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)

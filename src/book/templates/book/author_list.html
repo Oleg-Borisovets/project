@@ -1,24 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
-
-
-
-
 {% block title %}
 {{Document}}
 {% endblock title %}
-
-
-
-
-
 {% block main_content %}
 
+{% load ref_tags %}
+
+{% load crispy_forms_tags %}
 
 
 
 
     <h1>{{pk}}</h1>
+
+    <form action="{{current_url}}" method="get">
+        {{ search_form|crispy }}
+    </form>
 
   
 

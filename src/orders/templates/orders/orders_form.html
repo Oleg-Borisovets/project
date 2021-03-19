@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block main_content %}
+<h1>{{pk}}</h1>
+
+<h1>Карзина</h1>
+{{request.session.current_cart_pk}}
+
+
+
+
+
+    <h1>Add</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-success btn-block">Add</button>
+        <a href="/orders/orders/"class="btn btn-danger btn-block">All</a><br>
+        
+        
+    </form>     
+    <!-- {% for bo in cart %}
+    {{ bo.pk }}
+    {% endfor %} -->
+    
+    {% endblock main_content %}

@@ -6,10 +6,16 @@
 
 
 {% block main_content %}
+{% load ref_tags %}
+
+{% load crispy_forms_tags %}
     <h1>{{pk}}</h1>
 
+    <form action="{{current_url}}" method="get">
+        {{ search_form|crispy }}
+    </form>
 
-
+  
 
     <div class="pagination">
         <span class="step-links">
@@ -28,6 +34,9 @@
             {% endif %}
         </span>
     </div>
+
+
+ 
 
 
 

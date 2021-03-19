@@ -10,6 +10,19 @@ class Cart(models.Model):
         blank=False,
         null=True
     )
+          # Дата внесения в каталог
+    created = models.DateTimeField(
+        verbose_name='Created',
+        auto_now=False, # время изменения 
+        auto_now_add=True # время добовление 
+    )
+    # Дата последнего изменения карточки
+
+    update = models.DateTimeField(
+        verbose_name='Update',
+        auto_now=True,
+        auto_now_add=False
+    )
     def __str__(self):
         return f"cart #{self.pk}"
 
@@ -36,7 +49,20 @@ class BookInCart(models.Model):
     price = models.DecimalField(
         "Price", 
         max_digits=5,
-        decimal_places=2)    
+        decimal_places=2)
+       # Дата внесения в каталог
+    created = models.DateTimeField(
+        verbose_name='Created',
+        auto_now=False, # время изменения 
+        auto_now_add=True # время добовление 
+    )
+    # Дата последнего изменения карточки
+
+    update = models.DateTimeField(
+        verbose_name='Update',
+        auto_now=True,
+        auto_now_add=False
+    )        
     def __str__(self):
         return f"BookInCart #{self.pk} {self.book.name} quantity {self.quantity}"   
     @property

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+{{Document}}
+{% endblock title %}
+{% load static %}
+{% block main_content %}
+
+
+    <h1>name {{object.name|default:"Description is empty "}}</h1>
+    
+    <a href="/orders/orders/"class="btn btn-success">All</a><br>
+   
+    
+    {{object.description}}</br>
+
+
+    {% endblock main_content %}

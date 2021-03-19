@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+{{Document}}
+{% endblock title %}
+
+
+
+
+
+{% block main_content %}
+
+
+
+
+
+    <h1>Заказ добавлен</h1>
+
+  
+    
+  
+    <h1>Карзина</h1>
+    {{request.session.current_cart_pk}}
+   
+   
+   
+                  
+        
+    
+
+
+
+
+
+{% endblock main_content %}
+

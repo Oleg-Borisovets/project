@@ -76,6 +76,7 @@ urlpatterns = [
     path('accs/', include(accs_urls)),#для логина 
     path('cart/', include(cart_urls, namespace="cart")),
     path('orders/', include(orders_urls, namespace="orders")),
+  
 
 
     path('book/', views.Booklist.as_view(), name=('book')),#карточка товара 
