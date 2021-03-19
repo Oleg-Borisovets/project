@@ -185,15 +185,54 @@ footer p {
 </div> -->
 
 
-<h1></h1>
-     
+<h1>Поиск</h1>
 <form action="{{current_url}}" method="get">
-    {{ search_form|crispy }}
-   
-</form>
+  {{ search_form|crispy }}
+
+ 
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Новинки авторов</h5>
+      <!-- <h6 class="card-subtitle mb-2 text-muted">Подзаголовок карты</h6> -->
+      {% for au in author %} 
+      <p class="card-text">{{ au.author_name }}</p>
+      {% endfor %}
+      <!-- <a href="#" class="card-link">Ссылка карты</a>
+      <a href="#" class="card-link">Другая ссылка</a> -->
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Акции</h5>
+      <!-- <h6 class="card-subtitle mb-2 text-muted">Подзаголовок карты</h6> -->
+      
+      <p class="card-text">2 по цене 1</p>
+      <p class="card-text">С каждых 15р скидка 1р</p>
+     
+      <!-- <a href="#" class="card-link">Ссылка карты</a>
+      <a href="#" class="card-link">Другая ссылка</a> -->
+    </div>
+  </div>
+
+</div>
+        </div>
+      </div>
 
 
 
+
+
+
+
+
+<!-- 
 <h2>Новинки авторов</h2>
 <head>
   <meta charset="utf-8">
@@ -217,7 +256,7 @@ footer p {
    <li>{{ au.author_name }}</li>
    {% endfor %}
   </ul>
- </body>
+ </body> -->
 
 
 
@@ -263,6 +302,8 @@ footer p {
   <h1>Все книги </h1>
 
  
+   
+</form>
 
   
   <div class="album py-5 bg-light">
