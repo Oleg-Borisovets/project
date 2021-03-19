@@ -85,6 +85,10 @@ urlpatterns = [
     path('book-create-cbv/', views.BookCreate.as_view(), name=('book-create-cbv')),
     path('book-update-cbv/<int:pk>/', views.BookUpdate.as_view(), name=('book-update-cbv')),
 
+    path('promotions-cbv/', views.Promotionslist.as_view(),  name=('promotions-cbv')),
+    path('promotions-delete-cbv/<int:pk>/', views.PromotionsDelete.as_view(), name=('promotions-detail')),
+    path('promotions-create-cbv/', views.PromotionsCreate.as_view(), name=('promotions-create-cbv')),
+    path('promotions-update-cbv/<int:pk>/', views.PromotionsUpdate.as_view(), name=('promotions-update-cbv')),
 
 ]
 

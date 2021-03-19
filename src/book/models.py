@@ -214,3 +214,15 @@ class Book(models.Model):
 #     pass   
 
 
+class Promotions(models.Model):
+    # Название книги
+    name = models.CharField(
+        verbose_name="name",
+        max_length=100) 
+
+    description = models.TextField(
+        verbose_name= "description",
+        null=True,
+        blank=True)
+    def __str__(self):
+        return self.name    

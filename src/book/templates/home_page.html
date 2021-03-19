@@ -213,8 +213,9 @@ footer p {
       <h5 class="card-title">Акции</h5>
       <!-- <h6 class="card-subtitle mb-2 text-muted">Подзаголовок карты</h6> -->
       
-      <p class="card-text">2 по цене 1</p>
-      <p class="card-text">С каждых 15р скидка 1р</p>
+      {% for pr in promotions %} 
+      <p class="card-text">{{ pr.name }}</p>
+      {% endfor %}
      
       <!-- <a href="#" class="card-link">Ссылка карты</a>
       <a href="#" class="card-link">Другая ссылка</a> -->

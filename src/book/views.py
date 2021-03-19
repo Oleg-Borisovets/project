@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from book.models import Author, Series, Genres, Publisher, Book
+from book.models import Author, Series, Genres, Publisher, Book, Promotions
 from django.urls import reverse, reverse_lazy
 from . import forms
 from django.views.generic import DetailView, ListView, DeleteView, CreateView, UpdateView, TemplateView
@@ -309,6 +309,7 @@ class Home(TemplateView):
         context["book"]= Book.objects.all()
         context["book_n"]= Book.objects.all().order_by("-pk")[:5]
         context["author"]= Author.objects.all().order_by("-pk")[:5]
+        context["promotions"]= Promotions.objects.all().order_by("-pk")[:5]
 
 
         context['page_title'] = "Book"
@@ -322,10 +323,7 @@ class Home(TemplateView):
                 'direction': direction_to_sort_on, 
             })
         context['field_to_sort_on'] = field_to_sort_on
-        context['direction_to_sort_on'] = direction_to_sort_on
-            
-
-        
+        context['direction_to_sort_on'] = direction_to_sort_on    
         
         
         return context  
@@ -446,5 +444,25 @@ class BookUpdate(LoginRequiredMixin, UpdateView):
 
 
 
+class Promotionslist(LoginRequiredMixin, ListView):
+    model=Promotions 
+    login_url = '/accs/login-lv/'
+    paginate_by = 5
 
+class PromotionsDelete(LoginRequiredMixin, DeleteView):
+    success_url=reverse_lazy('promotions-cbv')
+    model=Promotions  
+    login_url = '/accs/login-lv/'    
          
+
+class PromotionsCreate(LoginRequiredMixin, CreateView):
+    model=Promotions
+    success_url=reverse_lazy('promotions-cbv')
+    fields=( 'name', 'description')    
+    login_url = '/accs/login-lv/'
+
+class PromotionsUpdate(LoginRequiredMixin, UpdateView): 
+    model=Promotions
+    success_url=reverse_lazy('promotions-cbv')
+    fields=( 'name', 'description') 
+    login_url = '/accs/login-lv/'         
