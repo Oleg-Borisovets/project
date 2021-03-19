@@ -243,7 +243,7 @@ footer p {
             <div class="card-body">
               <h5 class="card-title">{{ bo.name }}</h5>
               <p class="card-text">Price {{bo.price}}</p>
-              <p class="card-text">Age restrictions +{{bo.age_restrictions}}</p>
+              <p class="card-text">Age restrictions {{bo.age_restrictions}}+</p>
                 <p class="card-text">Amount {{bo.amount}}</p>
               <a href="{% url 'cart:add-to-cart' %}?book={{ bo.pk }}" class="btn btn-primary">Add to cart</a>
               
@@ -276,7 +276,7 @@ footer p {
               <div class="card-body">
                 <h5 class="card-title">{{ bo.name }}</h5>
                 <p class="card-text">Price {{bo.price}}</p>
-                <p class="card-text">Age restrictions +{{bo.age_restrictions}}</p>
+                <p class="card-text">Age restrictions {{bo.age_restrictions}}+</p>
                 <p class="card-text">Amount {{bo.amount}}</p>
 
                 <a href="{% url 'cart:add-to-cart' %}?book={{ bo.pk }}" class="btn btn-primary">Add to cart</a>
