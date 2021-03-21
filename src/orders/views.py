@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from orders import models
 from orders.models import Orders, InformationOrder
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin, ImproperlyConfigured
 from django.urls import reverse, reverse_lazy
 from cart.models import Cart, BookInCart
 from book.models import Book
@@ -101,8 +101,12 @@ class InformationOrderList(LoginRequiredMixin, ListView):
 
 
 
-
-
+# class OrdersUpdate(LoginRequiredMixin, UpdateView):
+#     def get_object(self, queryset=None):
+       
+   
+    
+    
 
   
 
